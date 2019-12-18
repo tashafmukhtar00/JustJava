@@ -1,12 +1,10 @@
 package com.example.justjava;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,19 +19,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void decrement(View view){
+    public void decrement(View view) {
 
-        quantity = quantity -1;
+        quantity = quantity - 1;
         display(quantity);
-
 
 
     }
 
-    public void increment(View view){
+    public void increment(View view) {
 
 
-        quantity = quantity +1;
+        quantity = quantity + 1;
         display(quantity);
 
     }
@@ -42,8 +39,9 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        display(quantity);
-        displayPrice(quantity *7);
+
+        String msg = "Total Amount : " + displayPrice(quantity) + "$" + " For " + quantity + " Cups. Thanks";
+        displayMessage(msg);
 
     }
 
@@ -59,8 +57,17 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given price on the screen.
      */
-    private void displayPrice(int number) {
+    private int displayPrice(int number) {
+
+        return number * 5;
+
+    }
+
+    /**
+     * This method displays the given text on the screen.
+     */
+    private void displayMessage(String message) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+        priceTextView.setText(message);
     }
 }
